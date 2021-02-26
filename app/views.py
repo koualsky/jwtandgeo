@@ -27,7 +27,7 @@ class CreateUserView(CreateAPIView):
 
 
 class GeolocalizationView(APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
 
