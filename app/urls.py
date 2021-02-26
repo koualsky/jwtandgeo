@@ -7,4 +7,5 @@ urlpatterns = [
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', views.CreateUserView.as_view(), name='register'),
     path('hello/', views.HelloView.as_view(), name='hello'),
+    path('geolocalization/', views.GeolocalizationView.as_view(), name='geolocalization'),
 ]

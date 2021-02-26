@@ -9,6 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')#@&ykyy3=u7n&f4(r!v^_jkgq611aopb)o0-j7w65doenu=_l'
+GEOLOCALIZATION_KEY = '9b826a1fde01811255d39542cb9c332d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
