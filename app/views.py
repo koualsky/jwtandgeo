@@ -8,7 +8,7 @@ import socket
 import requests
 import json
 import re
-from .serializers import UserSerializer
+from .serializers import UserSerializer, GeolocalizationSerializer
 from .models import Geolocalization
 
 
@@ -73,12 +73,17 @@ class GeolocalizationView(APIView):
             )
 
     def get(self, request):
-
-        # Get parameter and do the validation
         address = request.GET.get("address")
-
-        content = {"message": f"Geolocalization for IP {address} was removed."}
-        return Response(content)
+        try:
+            geolocalization = Geolocalization.objects.get(ip=address)
+            serializer = GeolocalizationSerializer(geolocalization)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response(
+                {
+                    "message": f"{e}. Please provide a valid IP address in body parameters."
+                }
+            )
 
     def delete(self, request):
         address = request.POST.get("address")

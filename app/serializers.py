@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from .models import Geolocalization
 
 UserModel = get_user_model()
 
@@ -20,3 +21,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = ("id", "username", "password",)
+
+
+class GeolocalizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Geolocalization
+        fields = '__all__'
