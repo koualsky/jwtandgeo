@@ -22,11 +22,13 @@ class HelloView(APIView):
 
 class CreateUserView(CreateAPIView):
     model = get_user_model()
-    permission_classes = [AllowAny]
+    permission_classes = (AllowAny,)
     serializer_class = UserSerializer
 
 
 class GeolocalizationView(APIView):
+    # permission_classes = (IsAuthenticated,)
+
     def post(self, request):
 
         # Get parameter and do the validation
