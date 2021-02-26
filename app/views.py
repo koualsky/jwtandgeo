@@ -73,10 +73,22 @@ class GeolocalizationView(APIView):
             )
 
     def get(self, request):
-        content = {"message": "Response for get :)"}
+
+        # Get parameter and do the validation
+        address = request.GET.get("address")
+
+        content = {"message": f"Geolocalization for IP {address} was removed."}
         return Response(content)
 
     def delete(self, request):
-        pk = request.POST.get("pk")
-        content = {"message": f"PK: {pk} was deleted!"}
-        return Response(content)
+        address = request.POST.get("address")
+        try:
+            geolocalization = Geolocalization.objects.get(ip=address)
+            geolocalization.delete()
+        except Exception as e:
+            return Response(
+                {
+                    "message": f"{e}. Please provide a valid IP address in body parameters."
+                }
+            )
+        return Response({"message": f"Geolocalization for IP {address} was removed."})
