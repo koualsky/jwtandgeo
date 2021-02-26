@@ -14,7 +14,7 @@ GEOLOCALIZATION_KEY = '9b826a1fde01811255d39542cb9c332d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Yes, I know that's a bad idea in real life...
 
 
 # Application definition
