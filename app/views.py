@@ -48,7 +48,7 @@ class GeolocalizationView(APIView):
             f"http://api.ipstack.com/{address}?access_key={settings.GEOLOCALIZATION_KEY}&format=1"
         )
         content = json.loads(r.text)
-        ip_exists = Geolocalization.objects.get(ip=content.get("ip"))
+        ip_exists = Geolocalization.objects.filter(ip=content.get("ip"))
         if ip_exists:
             return Response(
                 {
