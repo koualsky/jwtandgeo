@@ -12,8 +12,12 @@ class Geolocalization(models.Model):
     region_name = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=200, null=True, blank=True)
     zip = models.CharField(max_length=200, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=20, decimal_places=15, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=20, decimal_places=15, null=True, blank=True)
+    latitude = models.DecimalField(
+        max_digits=20, decimal_places=15, null=True, blank=True
+    )
+    longitude = models.DecimalField(
+        max_digits=20, decimal_places=15, null=True, blank=True
+    )
     location = models.JSONField(null=True, blank=True)
 
     def __str__(self):
