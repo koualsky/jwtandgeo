@@ -88,7 +88,7 @@ class GeolocalizationView(APIView):
             except Exception as e:
                 return Response(
                     {
-                        "message": f"{e}. Please provide a valid IP address in body parameters."
+                        "message": f"{e} Please provide a valid IP address in body parameters."
                     }
                 )
 
