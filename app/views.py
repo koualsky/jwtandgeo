@@ -1,15 +1,17 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.generics import CreateAPIView
-from django.contrib.auth import get_user_model
-from django.conf import settings
-import socket
-import requests
 import json
 import re
-from .serializers import UserSerializer, GeolocalizationSerializer
+import socket
+
+import requests
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import Geolocalization
+from .serializers import GeolocalizationSerializer, UserSerializer
 
 
 class HelloView(APIView):
