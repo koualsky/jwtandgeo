@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.generics import CreateAPIView
+from rest_framework import status
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import socket
@@ -100,14 +101,14 @@ class GeolocalizationView(APIView):
             return Response(response)
 
     def delete(self, request):
-        address = request.POST.get("address")
+        address = request.GET.get("address")
         try:
             geolocalization = Geolocalization.objects.get(ip=address)
             geolocalization.delete()
         except Exception as e:
             return Response(
                 {
-                    "message": f"{e}. Please provide a valid IP address in body parameters."
+                    "message": f"{e} Please provide a valid IP address in body parameters."
                 }
             )
         return Response({"message": f"Geolocalization for IP {address} was removed."})
