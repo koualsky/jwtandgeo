@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+#  db:
+#    image: postgres
+#    container_name: db
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    ports:
+#      - 5432:5432
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    command: python manage.py runserver 0.0.0.0:8001
+    volumes:
+      - .:/code
+    ports:
+      - 8002:8001  # out 8002.
+#    env_file:
+#      - etc/dev.env
+#    depends_on:
+#      - db
